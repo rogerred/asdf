@@ -3,25 +3,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var multer = require('multer');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var uploads = require('/routes/upload');
-var upload = multer().single('avatar');
 
 var app = express();
 
-app.get('/profile', function(req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            // An error occurred when uploading
-            return;
-        }
-       
-    })
-})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -36,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-//app.use('/upload', upload);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
