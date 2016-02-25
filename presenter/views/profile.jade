@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  form(method="get", enctype="multipart/form-data", action="/profile");
+    input(type="file", name="thumbnail");
+    input(type="submit");
